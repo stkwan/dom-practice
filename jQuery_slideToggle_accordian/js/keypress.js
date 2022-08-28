@@ -6,17 +6,16 @@ $(document).ready(function() {
   $form.on("click", (event) => {
     event.preventDefault();
     $currentKey = $("#currentkey").val();
-    
+
     $(document).off("keypress").on("keypress", (e) => {
       let pressedKey = e.key;
-      if ($currentKey === pressedKey) {
-        $("a").trigger("click");
-      }
-    })
-  })
+      if ($currentKey !== pressedKey) { return; }
+      $("a").trigger("click");
+    });
+  });
 
   $("a").on("click", (e) => {
     e.preventDefault();
     $("#accordian").slideToggle();
-  })
+  });
 });
